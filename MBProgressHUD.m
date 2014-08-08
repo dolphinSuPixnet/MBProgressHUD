@@ -125,6 +125,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 
 + (MB_INSTANCETYPE)showHUDAddedTo:(UIView *)view animated:(BOOL)animated {
 	MBProgressHUD *hud = [[self alloc] initWithView:view];
+    
 	[view addSubview:hud];
 	[hud show:animated];
 	return MB_AUTORELEASE(hud);
@@ -183,9 +184,10 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		self.opacity = 0.8f;
 		self.color = nil;
 		self.labelFont = [UIFont boldSystemFontOfSize:kLabelFontSize];
-		self.labelColor = [UIColor whiteColor];
+        UIColor *customColor = [UIColor colorWithRed:0.651 green:0.100 blue:0.070 alpha:1.000];
+		self.labelColor = customColor;
 		self.detailsLabelFont = [UIFont boldSystemFontOfSize:kDetailsLabelFontSize];
-		self.detailsLabelColor = [UIColor whiteColor];
+		self.detailsLabelColor = customColor;
 		self.xOffset = 0.0f;
 		self.yOffset = 0.0f;
 		self.dimBackground = NO;
@@ -489,6 +491,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		[indicator removeFromSuperview];
 		self.indicator = MB_AUTORELEASE([[UIActivityIndicatorView alloc]
 										 initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]);
+        ((UIActivityIndicatorView *)self.indicator).color = [UIColor colorWithRed:0.651 green:0.100 blue:0.070 alpha:1.000];
 		[(UIActivityIndicatorView *)indicator startAnimating];
 		[self addSubview:indicator];
 	}
